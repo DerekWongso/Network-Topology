@@ -4,7 +4,7 @@ This project will demonstrate how to setup a basic network topology with the ass
 **Cisco Packet Tracer** is a simulation tool built by Cisco to help educate and train individuals on how to build networks across a multitude of devices.
 
 ### Step 1
-Set up the Router and two Switches. Then connect them with the Copper-Straight-Through wire connection.
+Set up the router and two switches. Then connect them with the Copper-Straight-Through wire connection.
 
 ![github-small](https://github.com/DerekWongso/Network-Topology/blob/3dfb1fe3b4ef15e55ee5005c8b51e3f2a382cb32/Images/r%26s.png)
 
@@ -18,7 +18,7 @@ Go to your router settings, click the **Command Line Interface** or **CLI** and 
 ![github-small](https://github.com/DerekWongso/Network-Topology/blob/3dfb1fe3b4ef15e55ee5005c8b51e3f2a382cb32/Images/dwr1.png)
 
 
-The same steps apply for the two Switches as well. It is best to also give them host names to keep it orderly. In this project, I named my Switches **DWSW1** and **DWSW2**
+The same steps apply for the two switches as well. It is best to also give them host names to keep it orderly. In this project, I named my switches **DWSW1** and **DWSW2**
 
 ![github-small](https://github.com/DerekWongso/Network-Topology/blob/3dfb1fe3b4ef15e55ee5005c8b51e3f2a382cb32/Images/dwsw1.png)
 
@@ -93,4 +93,26 @@ Lastly, to test the connectivity, you can ping the ip address of the **VLAN** an
 
 ![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/sw1connect.png)
 ![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/sw2connect.png)
+
+### Step 6
+On this step, we will give the router a static default route IP. As a sample, I made my static default route IP 204.186.29.3
+
+**en/**
+**conf t/**
+**ip route 0.0.0.0 0.0.0.0 ip address**
+
+![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/r1ipadd.png)
+
+### Step 7
+We can also integrate **DHCP** into our network. **DHCP** or **Dynamic Host Configuration Protocol** is a protocol used to automate and manage multiple devices on IP networks, allowing the use of services such as DNS or NTP. To set it up, you go to the **CLI** on your router and input:
+
+**ip dhcp pool name/**
+**network ip and subnet/**
+**dns-server ip address/**
+**exit/**
+**dhcp excluded-address ip scope**
+
+For example, I named the DHCP **DWNet,** made the DNS server 192.168.20.18, and excluded a particular scope of addresses including address 254.
+
+![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/dhcpdns.png)
 
