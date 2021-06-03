@@ -116,3 +116,42 @@ For example, I named the DHCP **DWNet,** made the DNS server 192.168.20.18, and 
 
 ![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/dhcpdns.png)
 
+### Step 8
+You can construct an access list on the router to deny IP traffic from certain addresses. You can input this into the router's **CLI:**
+
+**access-list 1 deny ip address and subnet mask/**
+**access-list permit any/**
+**int g0/1/**
+**ip access-group 1 in**
+
+As a sample, I denied access to the IP and subnet of 117.23.54.0 0.0.0.255. The permit any command is also important because all other traffic will not be present if it is not used. 
+
+![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/denypermit.png)
+
+### Step 9
+You can set up **SSH** on all your devices. **SSH** or **Secure Shell Protocol** is a protocol which it helps provide a secure channel over an unsecured network. It utilizes a client-server style of protocol. You can input these commands to create a domain name, a rsa key, and ultimately enable **SSH**
+
+**ip domain-name name/**
+**crypto key generate rsa/**
+**ip ssh version 2/**
+**line vty 0 4/**
+**transport input ssh**
+**login local**
+
+For this case, my domain name is **DECKKINGMASTER.LOCAL.** I made the key 2048 bits as it is the most secure.
+
+![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/ssh.png)
+
+### Step 10
+For all our devices, this step will help lock out the Aux port, disable the http engine, disable **Cisco Discovery Protocol,** and set a password for the console port. You can input this on the router and switch **CLI:**
+
+**service password-encryption/**
+**line aux 0/**
+**exec-timeout 0 0/**
+**exit/**
+**line con 0/**
+**password password/**
+**exit/**
+**no cdp run**
+
+![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/auxcdp.png)
