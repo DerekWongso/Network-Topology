@@ -63,3 +63,34 @@ For my first switch, I gave it the IP address 192.168.20.1 and the subnet mask 2
 For the second switch, I gave it the IP address 204.186.29.1 and the subnet mask 255.255.255.248
 
 ![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/ip.png)
+
+### Step 5
+Here, we can set up **VLAN** or **Virtual Local Area Network.** **VLAN** is a custom netowork which lets a group of devices that are available in many networks to be fused into a logical network. In this case, we will be giving the **VLAN** interface IP addresses for both switches. For this demonstration, I made the **VLAN** IP addresses and subnet for  switch 1 192.168.20.254 255.255.255.0 and for switch 2 204.186.29.2 255.255.255.248. The commands for the **CLI** are:
+
+**en/**
+**conf t/**
+**vlan number/**
+**name name/**
+**exit/**
+**int vlan number/**
+**ip add ip address and subnet mask/**
+**exit**
+
+![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/sw1Vlan.png)
+![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/sw2vlan.png)
+
+To add connection to fast ethernet:
+
+**int f0/1/**
+**switchport mode access/**
+**switchport access vlan number**
+
+
+Lastly, to test the connectivity, you can ping the ip address of the **VLAN** and switch itself:
+
+**exit/**
+**ping ip address**
+
+![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/sw1connect.png)
+![github-small](https://github.com/DerekWongso/Network-Topology/blob/main/Images/sw2connect.png)
+
